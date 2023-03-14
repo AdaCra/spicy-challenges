@@ -16,14 +16,24 @@ body {
 }
 
 .profile__image {
+  margin-top: 20px;
   border-radius: 50%;
   max-width: 50%;
   height: auto;
+  align-self: center;
+  border-style: groove;
+  border-width: 5px;
+  border-color: #abf8af #ffffff00 #abbef8;
 }
 
 .tech-stack__list {
   list-style: none;
-  padding-left: 0;
+  border-top: 2px solid #252629;
+  border-bottom: 2px solid #252629;
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  background: linear-gradient(180deg, #abbef8 0%, #f38ca6 100%);
 }
 
 .tech-stack__list-item {
@@ -35,22 +45,18 @@ body {
 
 .profile {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   border-top: 2px solid #252629;
   border-bottom: 2px solid #252629;
   background: #abf8af;
   background: linear-gradient(180deg, #abf8af 0%, #abbef8 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 h2 {
   padding: 20px;
   align-self: flex-start;
-}
-
-.profile > img {
-  margin-top: 20px;
 }
 
 .profile > p {
@@ -60,16 +66,4 @@ h2 {
 
 section:not(.profile) {
   background: #abbef8;
-}
-
-.tech-stack__list {
-  border-top: 2px solid #252629;
-  border-bottom: 2px solid #252629;
-  display: flex;
-  padding: 20px;
-  background: linear-gradient(180deg, #abbef8 0%, #f38ca6 100%);
-}
-
-.tech-stack__list-item {
-  margin: 20px 10px 20px 0px;
 }
