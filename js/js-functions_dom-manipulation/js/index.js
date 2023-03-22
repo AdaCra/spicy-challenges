@@ -35,6 +35,22 @@ grayButton.addEventListener("click", () => {
   removeAllColors();
   addColorClass();
 });
+
+const pinkButton = document.querySelector("[data-js=js-pink-button]");
+pinkButton.addEventListener("click", () => {
+  // Code here
+  removeAllColors();
+  addColorClass();
+});
+
+
+const yellowButton = document.querySelector("[data-js=js-yellow-button]");
+yellowButton.addEventListener("click", () => {
+  // Code here
+  removeAllColors();
+  addColorClass();
+});
+
 console.log(box.classList[1]);
 // Write your two functions below:
 
