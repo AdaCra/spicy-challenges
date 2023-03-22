@@ -42,7 +42,7 @@ function getDayColor() {
   if (dayOfWeek === 1) {
     return "darkgray";
   }
-  if (dayOfWeek > 1 && dayOfWeek < 6) {
+  if (dayOfWeek > 1 && dayOfWeek < 5) {
     return "lightblue";
   }
   return "hotpink";
