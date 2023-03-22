@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>HTML Zoo Form</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <section aria-label="contact">
+      <h2 id="form-heading">Zoo Visitor Sign Up</h2>
+      <p id="form-description">
+        Please provide all necessary information on your stay with us.
+      </p>
+
+      <form aria-labelledby="form-heading" aria-describedby="form-description">
+        <fieldset>
+          <legend>Enter your information</legend>
+
+          <!-- Email: label & input -->
+          <label for="email">Email Address:</label>
+          <input type="email" name="email" id="email" />
+
+          <!-- Date: label & input -->
+          <label for="arrivalDate">Arrival Date:</label>
+          <input type="date" name="arrivalDate" id="arrivalDate" />
+
+          <fieldset class="radio-options">
+            <legend>Which one of these animals would you like to visit?</legend>
+
+            <!-- Radio Buttons: labels & inputs -->
+            <div>
+              <input
+                type="radio"
+                id="relaxedSloths"
+                name="animals"
+                value="Relaxed Sloths"
+                checked
+              />
+              <label for="relaxedSloths">Relaxed Sloths</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="jumpyKangaroos"
+                name="animals"
+                value="Jumpy Kangaroos"
+              />
+              <label for="jumpyKangaroos">Jumpy Kangaroos</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="thievingRacoons"
+                name="animals"
+                value="Thieving Racoons"
+              />
+              <label for="thievingRacoons">Thieving Racoons</label>
+            </div>
+          </fieldset>
+
+          <!-- Textarea: label & input -->
+          <label for="concernsMessage">Any Concerns?</label>
+          <textarea
+            name="concernsMessage"
+            id="concernsMessage"
+            cols="30"
+            rows="10"
+            placeholder="Add any concerns you might have before booking a visit."
+          ></textarea>
+
+          <!-- Two Checkboxes: labels & inputs -->
+          <div>
+            <label for="personalDataProcessingAgreement"
+              >"I have read and accept that all the information I give will be
+              sold to advertisers for a few cents as per the website user
+              agreement."
+            </label>
+            <input
+              type="checkbox"
+              name="personalDataProcessingAgreement"
+              id="personalDataProcessingAgreement"
+              required
+            />
+            <label for="newsletterSignUp"
+              >Would you like to receive our amazing, spam-free, hourly
+              newsletter</label
+            >
+            <input
+              type="checkbox"
+              name="newsletterSignUp"
+              id="newsletterSignUp"
+            />
+          </div>
+          <!-- Two Buttons: reset & submit -->
+          <div>
+            <button type="reset">Reset Form</button>
+            <button type="submit">Submit Form</button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+  </body>
+</html>
