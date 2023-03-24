@@ -8,15 +8,10 @@ addButton.addEventListener("click", () => {
   // Exercise: Append a new entry to the toast messages container
   console.log("TEST THAT IT WORKS!");
   let newListItem = document.createElement("li");
+  newListItem.classList.add(`toast-container__message`);
+  newListItem.innerText = `This is some toast`;
   toastContainer.append(newListItem);
   // toastContainer.append(document.createElement("li"));
-  document
-    .querySelector('[data-js="toast-container"]')
-    .append(document.createElement("li"));
-  newListItem.classList.add(`toast-container__message`);
-  newListItem.innerText = `I'm a toast message`;
-
-  // `<li class='toast-container__message'>I'm a toast message.</li>`;
 });
 
 clearButton.addEventListener("click", () => {
