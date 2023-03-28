@@ -43,5 +43,14 @@ main.append(navElement);
 navElement.append(ul);
 
 // --v-- write/change code here --v--
-
+for (links in nav) {
+  const li = document.createElement("li");
+  ul.appendChild(li);
+  console.log(nav[links]);
+  const anchor = document.createElement("a");
+  console.log(nav[links]["text"]);
+  anchor.textContent = `${nav[links]["text"]}`;
+  anchor.setAttribute("href", `${nav[links]["href"]}`);
+  li.appendChild(anchor);
+}
 // --^-- write/change code here --^--
