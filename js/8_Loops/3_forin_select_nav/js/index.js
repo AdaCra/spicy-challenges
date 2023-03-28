@@ -21,7 +21,12 @@ select.name = "languages";
 main.append(select);
 
 // --v-- write/change code here --v--
-
+for (language in languages) {
+  const option = document.createElement("option");
+  option.setAttribute("value", `${language}`);
+  option.textContent = `${languages[language]}`;
+  select.appendChild(option);
+}
 // --^-- write/change code here --^--
 
 // Part 2: Creating a Navigation Bar
