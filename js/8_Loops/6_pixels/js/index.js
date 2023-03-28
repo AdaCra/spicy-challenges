@@ -51,7 +51,7 @@ const pixelValues = [
   [
     "#9bb9b7",
     "#ed4913",
-    "#160601",
+    "#3f4eff",
     "#ec4811",
     "#fe4d13",
     "#ec4811",
@@ -123,3 +123,12 @@ const pixelValues = [
 ];
 
 const canvas = document.querySelector('[data-js="canvas"]');
+
+for (let i = 0; i < pixelValues.length; i++) {
+  for (let j = 0; j < pixelValues[i].length; j++) {
+    const pixel = document.createElement("div");
+    pixel.classList.add("pixel");
+    pixel.style.backgroundColor = pixelValues[i][j];
+    canvas.append(pixel);
+  }
+}
