@@ -5,12 +5,12 @@ function handleUserLogin(onSuccess) {
 }
 
 // The exercise starts here!
-function showWelcomeMessage(userNamer) {
-  console.log(`Welcome ${userNamer}! You are logged in now.`);
+function showWelcomeMessage(userName) {
+  console.log(`Welcome ${userName}! You are logged in now.`);
 }
 
 handleUserLogin(showWelcomeMessage);
 
 handleUserLogin((userName) => {
-  console.log(`Welcome ${userNamer}! You are logged in now.`);
+  console.log(`Welcome ${userName}! You are logged in now.`);
 });

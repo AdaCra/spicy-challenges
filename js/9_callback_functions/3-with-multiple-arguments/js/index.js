@@ -7,11 +7,11 @@ function handleUserLogin(onSuccess) {
 // The exercise starts here!
 
 function showWelcomeMessage(userName, userRole) {
-  console.log(`Welcome ${userName}! You are logged in now as ${userRole}.`);
+  console.log(`Welcome ${userName}! You are now logged in as ${userRole}.`);
 }
 
 handleUserLogin(showWelcomeMessage);
 
 handleUserLogin((userName, userRole) => {
-  console.log(`Welcome ${userName}! You are logged in now as ${userRole}.`);
+  console.log(`Welcome ${userName}! You are now logged in as ${userRole}.`);
 });
