@@ -10,3 +10,7 @@ function showWelcomeMessage(userNamer) {
 }
 
 handleUserLogin(showWelcomeMessage);
+
+handleUserLogin((userName) => {
+  console.log(`Welcome ${userNamer}! You are logged in now.`);
+});
