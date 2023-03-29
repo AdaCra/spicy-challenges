@@ -32,7 +32,7 @@ const allCardsThatAreNotBookmarked = cards.filter(
 );
 
 const allCardsWithTagsHTMLOrJSThatAreBookmarked = cards.filter(
-  (card) => card.tags.map((tag) => tag === "HTML") && card.isBookmarked
+  (card) => card.isBookmarked && card.tags.includes("html") || card.tags.includes("js")
 );
 
 export {
