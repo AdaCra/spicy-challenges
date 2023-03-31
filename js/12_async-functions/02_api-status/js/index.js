@@ -5,7 +5,7 @@ const apiStatusUrl = "https://example-apis.vercel.app/api/status";
 
 // Something needs to change here…
 // ↙️
-function checkIfApiIsAvailable() {
+async function checkIfApiIsAvailable() {
   /**
    * Hint 1:
    * Use the `fetch()` function and pass the `apiStatusUrl` into it
@@ -19,9 +19,27 @@ function checkIfApiIsAvailable() {
    * is okay and false if it is not.
    **/
   // --v-- write your code here --v--
+  try {
+    const apiStatusCheck = await fetch(apiStatusUrl);
+
+    console.log(apiStatusCheck);
+
+    await apiStatusCheck;
+
+    for (keys in apiStatusCheck) {
+      console.log(keys, apiStatusCheck.keys);
+    }
+    apiStatusCheck ? (icon.textContent = "✅") : (icon.textContent = "❌");
+  } catch (err) {
+    console.log("error:", err);
+  }
+
   // --^-- write your code here --^--
 }
 
 button.addEventListener("click", () => {
+  icon.textContent = "⏳";
   checkIfApiIsAvailable();
 });
+
+checkIfApiIsAvailable();
