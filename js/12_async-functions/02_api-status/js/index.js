@@ -19,17 +19,12 @@ async function checkIfApiIsAvailable() {
    * is okay and false if it is not.
    **/
   // --v-- write your code here --v--
-  try {
-    const apiStatusCheck = await fetch(apiStatusUrl);
+    try {
+    let apiStatusCheck = await fetch(apiStatusUrl);
 
     console.log(apiStatusCheck);
 
-    await apiStatusCheck;
-
-    for (keys in apiStatusCheck) {
-      console.log(keys, apiStatusCheck.keys);
-    }
-    apiStatusCheck ? (icon.textContent = "✅") : (icon.textContent = "❌");
+    apiStatusCheck.ok == true ? (icon.textContent = "✅") : (icon.textContent = "❌");
   } catch (err) {
     console.log("error:", err);
   }
