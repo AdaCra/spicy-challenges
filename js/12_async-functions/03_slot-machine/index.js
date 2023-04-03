@@ -2,6 +2,7 @@ import { Wheel } from "./components/Wheel/Wheel.js";
 import { SpinButton } from "./components/SpinButton/SpinButton.js";
 import { Machine } from "./components/Machine/Machine.js";
 import { Result } from "./components/Result/Result.js";
+import { getMaxCount } from "./utils/symbols.js";
 
 console.clear();
 
@@ -46,7 +47,7 @@ spinButton.addEventListener("click", async () => {
    * You can use `result.setResult(newPoints)` to update the result display
    * and keep track of the score.
    *
-   * Hint 6:
+   * [x]Hint 6:
    * You can use `result.setSpinning()` before calling the spin methods to
    * show the spinning text.
    *
@@ -62,6 +63,30 @@ spinButton.addEventListener("click", async () => {
    * and make sure it is always executed after the wheels have stopped,
    * even if an error was thrown.
    */
+  result.setSpinning();
+
+  try {
+    const pullTheOneArmedBandit = await Promise.all([
+      wheel1.spin(),
+      wheel2.spin(),
+      wheel3.spin(),
+    ]);
+    console.log(pullTheOneArmedBandit);
+    const spinResult = getMaxCount(pullTheOneArmedBandit);
+    console.log("spin result = ", spinResult);
+    let score = 0;
+    if (spinResult === 3) {
+      score += 100;
+    } else if (spinResult === 2) {
+      score += 10;
+    } else {
+      score = 0;
+    }
+    result.setResult(score);
+  } catch (error) {
+    result.setMachineChoked();
+    console.error(error);
+  }
 
   spinButton.disabled = false;
 });
