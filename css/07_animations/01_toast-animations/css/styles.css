@@ -1,3 +1,4 @@
+@import "./gradientAnimation.css";
 *,
 *::before,
 *::after {
@@ -15,7 +16,7 @@ body {
 
 .start-button {
   padding: 1rem 2rem;
-  background: #e5430f;
+  background: #f5521c;
   color: #e4e8f0;
   border-radius: 14px;
   border: none;
@@ -24,16 +25,16 @@ body {
 }
 
 .start-button:hover {
-  background-color: #f5521c;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .start-button:disabled {
+  animation: buttonGradientShift 2s linear 80ms 1 ;
   background-color: lightgrey;
   color: grey;
-  box-shadow: none;
+  box-shadow: #833ab4 0.16 0px 3px 6px, #833ab4 0.23 0px 3px 6px;
   cursor: not-allowed;
 }
 
