@@ -76,6 +76,7 @@ function App() {
         <EntriesSection
           entries={filter === "favorites" ? favoriteEntries : entries}
           filter={filter}
+          
           allEntriesCount={entries.length}
           favoriteEntriesCount={favoriteEntries.length}
           onToggleFavorite={handleToggleFavorite}
