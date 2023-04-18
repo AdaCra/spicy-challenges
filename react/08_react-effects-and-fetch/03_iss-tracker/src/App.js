@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Controls from "./components/Controls";
 import Map from "./components/Map";
 import "./styles.css";
@@ -11,7 +11,24 @@ export default function App() {
     latitude: 0,
   });
 
-  async function getISSCoords() {}
+  async function getISSCoords() {
+    try {
+      const response = await fetch(URL);
+      const data = await response.json();
+      console.log(data);
+      setCoords({ longitude: data.longitude, latitude: data.latitude });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      getISSCoords();
+    }, 10000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <main>
