@@ -19,8 +19,6 @@ test("calls callbacks when increasing or decreasing score", async () => {
 
   render(
     <Player
-      name="bob"
-      score={0}
       onDecreasePlayerScore={handleDecrease}
       onIncreasePlayerScore={handleIncrease}
     />

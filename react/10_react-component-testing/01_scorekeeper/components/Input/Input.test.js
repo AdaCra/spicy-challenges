@@ -12,9 +12,11 @@ test("renders a label and an input with the correct attributes", () => {
   );
 
   const labelName = screen.getByLabelText("testLabel");
-
-  expect(labelName).toBeInTheDocument();
+  const textInput = screen.getByRole("textbox", { name: "testLabel" });
+  const allinput = screen.getAllByRole("textbox");
   expect(labelName).toHaveAttribute("placeholder", "testPlaceholder");
+  expect(textInput).toBeInTheDocument();
+  expect(allinput).toHaveLength(1);
 });
 
 test("calls callback on every user input", async () => {
@@ -30,9 +32,9 @@ test("calls callback on every user input", async () => {
     />
   );
   const inputElement = screen.getByRole("textbox", { name: "testLabel" });
-    const inputValue = "testValue"
-  await user.type(inputElement, inputValue)
+  const inputValue = "testValue";
+  await user.type(inputElement, inputValue);
 
-  expect(mockHandleChange).toHaveBeenCalledTimes(inputValue.length)
-  expect(mockHandleChange).toHaveBeenCalledWith(expect.any(Object))
+  expect(mockHandleChange).toHaveBeenCalledTimes(inputValue.length);
+  expect(mockHandleChange).toHaveBeenCalledWith(expect.any(Object));
 });

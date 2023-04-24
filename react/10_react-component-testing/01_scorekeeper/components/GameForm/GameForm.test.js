@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import GameForm from "./index";
+import Button from "../Button";
 
 jest.mock("next/router", () => ({
   useRouter() {
@@ -8,10 +9,50 @@ jest.mock("next/router", () => ({
   },
 }));
 
-test("renders two input fields and a button", () => {});
+test("renders two input fields and a button", () => {
+  render(<GameForm />);
+  const formButton = screen.getAllByRole("button");
+  const formInputs = screen.getAllByRole("textbox");
 
-test("renders a form with the accessible name 'Create a new game'", () => {});
+  expect(formInputs).toHaveLength(2);
+  expect(formButton).toHaveLength(1);
+});
 
-test("submits the correct form data when every field is filled out", async () => {});
+test("renders a form with the accessible name 'Create a new game'", () => {
+  render(<GameForm />);
+  const form = screen.getByRole("form", { name: "Create a new game" });
 
-test("does not submit form if one input field is left empty", async () => {});
+  expect(form).toBeInTheDocument();
+});
+
+test("submits the correct form data when every field is filled out", async () => {
+  const mockHandleSubmit = jest.fn();
+  const user = userEvent.setup();
+
+  render(<GameForm onCreateGame={mockHandleSubmit} />);
+  const button = screen.getByRole("button");
+  const textInputs = screen.getAllByRole("textbox");
+  const gameInput = textInputs[0];
+  const userInput = textInputs[1];
+  await user.type(gameInput, "Dominoes");
+  await user.type(userInput, "bob, joe");
+
+  await user.click(button);
+
+  expect(mockHandleSubmit).toHaveBeenCalledWith(expect.any(Object));
+});
+
+test("does not submit form if one input field is left empty", async () => {
+  const mockHandleSubmit = jest.fn();
+  const user = userEvent.setup();
+
+  render(<GameForm onCreateGame={mockHandleSubmit} />);
+  const button = screen.getByRole("button");
+  const textInputs = screen.getAllByRole("textbox");
+  const gameInput = textInputs[0];
+  const userInput = textInputs[1];
+
+  await user.click(button);
+
+  expect(mockHandleSubmit).not.toHaveBeenCalledWith();
+});
