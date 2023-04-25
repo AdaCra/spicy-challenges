@@ -34,7 +34,7 @@ test("calls callback on every user input", async () => {
   const inputElement = screen.getByRole("textbox", { name: "testLabel" });
   const inputValue = "testValue";
   await user.type(inputElement, inputValue);
-
+    console.log(mockHandleChange)
   expect(mockHandleChange).toHaveBeenCalledTimes(inputValue.length);
   expect(mockHandleChange).toHaveBeenCalledWith(expect.any(Object));
 });

@@ -32,14 +32,14 @@ test("submits the correct form data when every field is filled out", async () =>
   render(<GameForm onCreateGame={mockHandleSubmit} />);
   const button = screen.getByRole("button");
   const textInputs = screen.getAllByRole("textbox");
-  const gameInput = textInputs[0];
-  const userInput = textInputs[1];
-  await user.type(gameInput, "Dominoes");
-  await user.type(userInput, "bob, joe");
+  const nameOfGame = textInputs[0];
+  const playerNames = textInputs[1];
+  await user.type(nameOfGame, "Dominoes");
+  await user.type(playerNames, "bob, joe");
 
   await user.click(button);
 
-  expect(mockHandleSubmit).toHaveBeenCalledWith(expect.any(Object));
+  expect(mockHandleSubmit).toHaveBeenCalledWith({ nameOfGame: "Dominoes", playerNames: ["bob", "joe"]});
 });
 
 test("does not submit form if one input field is left empty", async () => {
@@ -54,5 +54,5 @@ test("does not submit form if one input field is left empty", async () => {
 
   await user.click(button);
 
-  expect(mockHandleSubmit).not.toHaveBeenCalledWith();
+  expect(mockHandleSubmit).not.toHaveBeenCalled();
 });
