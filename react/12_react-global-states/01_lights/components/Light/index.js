@@ -5,7 +5,7 @@ export default function Light({ name, isOn, id, onToggle }) {
     <LightButton
       type="button"
       onClick={() => {
-        onToggle(id);
+        onToggle();
         // console.log(id)
       }}
       isOn={isOn}

@@ -20,7 +20,7 @@ export default function Lights({ lights, onToggle }) {
             name={light.name}
             isOn={light.isOn}
             id={light.id}
-            onToggle={onToggle}
+            onToggle={() => onToggle(light.id)}
           />
         </li>
       ))}

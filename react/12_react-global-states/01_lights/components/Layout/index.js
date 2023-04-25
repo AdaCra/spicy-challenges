@@ -27,6 +27,7 @@ const Content = styled.div`
 `;
 
 export default function Layout({ children, isDimmed }) {
+  
   return (
     <StyledLayout>
       <Background isDimmed={isDimmed}>

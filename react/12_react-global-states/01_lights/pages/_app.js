@@ -16,8 +16,8 @@ const initialLights = [
 export default function App({ Component, pageProps }) {
   const [lights, setLights] = useState(initialLights);
 
+  // Push Light Switches
   function onToggle(lightId) {
-    // console.log("on onToggleLight in APP: ", lightName);
     setLights((lights) =>
       lights.map((light) => {
         if (light.id === lightId) {
@@ -27,13 +27,41 @@ export default function App({ Component, pageProps }) {
       })
     );
   }
+  // Number of Lights
+  const lightsTotal = lights.length;
+
+  // Counting Burning Lights
+  const lightSum = lights.filter((light) => light.isOn).length;
+
+  // Switch All Lights On
+  function allLightsHandlerON() {
+    setLights((lights) =>
+      lights.map((light) => {
+        return { ...light, isOn: true };
+      })
+    );
+  }
+
+  // Switch All Lights Off
+  function allLightsHandlerOFF() {
+    setLights((lights) =>
+      lights.map((light) => {
+        return { ...light, isOn: false };
+      })
+    );
+    console.log(lightSum);
+  }
   return (
-    <Layout>
+    <Layout isDimmed={lightSum === 0 ? true : false}>
       <GlobalStyle />
       <Component
         {...pageProps}
         lights={lights}
+        lightSum={lightSum}
+        lightsTotal={lightsTotal}
         onToggle={onToggle}
+        toggleAllOn={allLightsHandlerON}
+        toggleAllOff={allLightsHandlerOFF}
       />
     </Layout>
   );
