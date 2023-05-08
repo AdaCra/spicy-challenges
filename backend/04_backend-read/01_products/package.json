@@ -21,6 +21,10 @@
     "swr": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.21.5",
     "@svgr/webpack": "^6.5.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
