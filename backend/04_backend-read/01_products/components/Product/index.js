@@ -2,16 +2,22 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import { StyledButton } from "../Button/Button.styled";
 import { ProductCard } from "./Product.styled";
+import Comments from "../Comments";
 
 export default function Product() {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data } = useSWR(id ? `/api/products/${id}` : null);
+  const { mutate, data, isLoading } = useSWR(id ? `/api/products/${id}` : null);
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
 
   if (!data) {
     return <h1>Loading...</h1>;
   }
+  if 
 
   return (
     <ProductCard>
@@ -20,18 +26,8 @@ export default function Product() {
       <p>
         Price: {data.price} {data.currency}
       </p>
-
       <p>Reviews:</p>
-      {data.reviews.map((review) => (
-        <div>
-          {console.log(review)}
-          {review.title}
-          <br />
-          {review.rating}/5
-          <br />
-          {review.text}
-        </div>
-      ))}
+      {data.reviews.length > 0 && <Comments reviews={data.reviews} />}
 
       <StyledButton type="button" onClick={() => router.push("/")}>
         Back to all
